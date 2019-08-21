@@ -2,8 +2,7 @@ module Main where
 
 import           Data.Char  (isDigit, isSpace)
 import           Data.Fixed (mod')
-import           Data.List  (intersperse, span)
-import           Data.List  (intercalate)
+import           Data.List  (span)
 
 main :: IO ()
 main = do
@@ -61,7 +60,7 @@ instance Show Node where
   show (FunctionCall n)  = n
   show (NumberLiteral x) = show x
   show (Error e)         = e
-  show (Frame f)         = "[" ++ (intercalate " " $ map show f) ++ "]"
+  show (Frame f)         = "[" ++ (unwords $ map show f) ++ "]"
 
 -- Lift numeric binary operation
 lNB :: (Double -> Double -> Double) -> StackFunc
